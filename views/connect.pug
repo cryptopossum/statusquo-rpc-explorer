@@ -1,13 +1,13 @@
 extends layout
 
 block content
-	h1 BTC RPC Explorer
+	h1 SQ RPC Explorer
 	hr
 
 	:markdown-it
-		This tool is intended to be a simple, stateless, self-hosted explorer for the Bitcoin blockchain, driven by RPC calls to your own bitcoind node. Because it is stateless, it is easy to run but lacks some (many?) of the features of other explorers.
+		This tool is intended to be a simple, stateless, self-hosted explorer for the statusquo blockchain, driven by RPC calls to your own statusquod node. Because it is stateless, it is easy to run but lacks some (many?) of the features of other explorers.
 
-		Start by connecting to your full, archiving bitcoind node. Make sure that the node you'll be connecting to has `txindex=1` set.
+		Start by connecting to your full, archiving statusquod node. Make sure that the node you'll be connecting to has `txindex=1` set.
 
 	form(method="post", action="/connect")
 		div(class="card")
