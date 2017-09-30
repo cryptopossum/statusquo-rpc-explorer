@@ -17,7 +17,11 @@ block content
 
 		if (result.getrawtransaction.blockhash)
 			li(class="breadcrumb-item")
-				a(href=("/block/" + result.getrawtransaction.blockhash)) Block #{result.getblock.height}
+				a(href=("/block/" + result.getrawtransaction.blockhash))
+					if(result.getblock)
+						Block #{result.getblock.height}
+					else
+						Block #0
 		li(class="breadcrumb-item active") Transaction
 
 	h1(class="h2") Transaction

@@ -120,10 +120,9 @@ router.get("/blocks", function(req, res) {
 				blockHeights.push(i);
 			}
 		}
-		
+
 		rpcApi.getBlocksByHeight(blockHeights).then(function(blocks) {
 			res.locals.blocks = blocks;
-
 			res.render("blocks");
 		});
 	});

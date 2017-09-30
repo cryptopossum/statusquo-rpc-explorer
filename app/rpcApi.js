@@ -2,16 +2,16 @@ var utils = require("./utils.js");
 
 var genesisCoinbaseTransactionTxid = "d1d71d8ec5323a2fe6e5201879a354f93127687274cdcc129fe45a19d2042df5";
 var genesisCoinbaseTransaction = {
-	"hex": "01000000010000000000000000000000000000000000000000000000000000000000000000ffffffff0804ffff001d02fd04ffffffff0100f2052a01000000434104f5eeb2b10c944c6b9fbcfff94c35bdeecd93df977882babc7f3a2cf7f5c81d3b09a68db7f0e04f21de5d4230e75e6dbe7ad16eefe0d4325a62067dc6f369446aac00000000",
+	"hex": "01000000010000000000000000000000000000000000000000000000000000000000000000ffffffff3504ffff001d01042d696e2073746174752071756f20726573206572616e7420616e74652062656c6c756d2032392f30392f32303137ffffffff0100f2052a010000004341041691c1f3712ce186e6bc5463d59238d9c03c0cefbd796b02c9f578d77bec665de31889347dac3ced71b1334d03f625a02dabe63f2971af2fc5bb79b69f0b8ba3ac00000000",
 	"txid": "d1d71d8ec5323a2fe6e5201879a354f93127687274cdcc129fe45a19d2042df5",
 	"hash": "d1d71d8ec5323a2fe6e5201879a354f93127687274cdcc129fe45a19d2042df5",
-	"size": 204,
-	"vsize": 204,
+	"size": 180,
+	"vsize": 180,
 	"version": 1,
-	"confirmations":475000,
+	"confirmations": 475000,
 	"vin": [
 		{
-			"coinbase": "04ffff001d0104455468652054696d65732030332f4a616e2f32303039204368616e63656c6c6f72206f6e206272696e6b206f66207365636f6e64206261696c6f757420666f722062616e6b73",
+			"coinbase": "04ffff001d01042d696e2073746174752071756f20726573206572616e7420616e74652062656c6c756d2032392f30392f32303137",
 			"sequence": 4294967295
 		}
 	],
@@ -20,19 +20,19 @@ var genesisCoinbaseTransaction = {
 			"value": 50,
 			"n": 0,
 			"scriptPubKey": {
-				"asm": "04f5eeb2b10c944c6b9fbcfff94c35bdeecd93df977882babc7f3a2cf7f5c81d3b09a68db7f0e04f21de5d4230e75e6dbe7ad16eefe0d4325a62067dc6f369446a OP_CHECKSIG",
-				"hex": "4104f5eeb2b10c944c6b9fbcfff94c35bdeecd93df977882babc7f3a2cf7f5c81d3b09a68db7f0e04f21de5d4230e75e6dbe7ad16eefe0d4325a62067dc6f369446aac",
+				"asm": "041691c1f3712ce186e6bc5463d59238d9c03c0cefbd796b02c9f578d77bec665de31889347dac3ced71b1334d03f625a02dabe63f2971af2fc5bb79b69f0b8ba3 OP_CHECKSIG",
+				"hex": "41041691c1f3712ce186e6bc5463d59238d9c03c0cefbd796b02c9f578d77bec665de31889347dac3ced71b1334d03f625a02dabe63f2971af2fc5bb79b69f0b8ba3ac",
 				"reqSigs": 1,
 				"type": "pubkey",
 				"addresses": [
-					"1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"
+					"17jbFdpjudouJeSATzrJSvr8maou3L14EZ"
 				]
 			}
 		}
 	],
-	"blockhash": "000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f",
-	"time": 1230988505,
-	"blocktime": 1230988505
+	"blockhash": "00000325c2a5561a9b22ae38f9bdee5711e736ad7f46e24b4688a5f53bbd50d3",
+	"time": 1506743937,
+	"blocktime": 1506743937
 };
 
 function getInfo() {
@@ -161,7 +161,6 @@ function getRawTransaction(txid) {
 			getBlockByHeight(0).then(function(blockZeroResult) {
 				var result = genesisCoinbaseTransaction;
 				result.confirmations = blockZeroResult.getblock.confirmations;
-
 				resolve(result);
 			});
 
@@ -172,7 +171,6 @@ function getRawTransaction(txid) {
 			if (err) {
 				console.log("Error 329813yre823: " + err);
 			}
-
 			resolve(result);
 		});
 	});
@@ -288,6 +286,7 @@ function getBlockData(rpcClient, blockHash, txLimit, txOffset) {
 
 				Promise.all(promises).then(function() {
 					var results = arguments[0];
+
 					for (var i = 0; i < results.length; i++) {
 						var resultX = results[i];
 
