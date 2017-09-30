@@ -1,10 +1,10 @@
 var utils = require("./utils.js");
 
-var genesisCoinbaseTransactionTxid = "4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b";
+var genesisCoinbaseTransactionTxid = "d1d71d8ec5323a2fe6e5201879a354f93127687274cdcc129fe45a19d2042df5";
 var genesisCoinbaseTransaction = {
 	"hex": "01000000010000000000000000000000000000000000000000000000000000000000000000ffffffff0804ffff001d02fd04ffffffff0100f2052a01000000434104f5eeb2b10c944c6b9fbcfff94c35bdeecd93df977882babc7f3a2cf7f5c81d3b09a68db7f0e04f21de5d4230e75e6dbe7ad16eefe0d4325a62067dc6f369446aac00000000",
-	"txid": "4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b",
-	"hash": "4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b",
+	"txid": "d1d71d8ec5323a2fe6e5201879a354f93127687274cdcc129fe45a19d2042df5",
+	"hash": "d1d71d8ec5323a2fe6e5201879a354f93127687274cdcc129fe45a19d2042df5",
 	"size": 204,
 	"vsize": 204,
 	"version": 1,
@@ -64,7 +64,7 @@ function getBlockByHeight(blockHeight) {
 
 	return new Promise(function(resolve, reject) {
 		var client = global.client;
-		
+
 		client.cmd('getblockhash', blockHeight, function(err, result, resHeaders) {
 			if (err) {
 				return console.log("Error 0928317yr3w: " + err);
@@ -127,7 +127,7 @@ function getBlockByHash(blockHash) {
 
 	return new Promise(function(resolve, reject) {
 		var client = global.client;
-		
+
 		client.cmd('getblock', blockHash, function(err, result, resHeaders) {
 			if (err) {
 				console.log("Error 0u2fgewue: " + err);
@@ -164,7 +164,7 @@ function getRawTransaction(txid) {
 
 				resolve(result);
 			});
-			
+
 			return;
 		}
 
@@ -188,7 +188,7 @@ function getRawTransactions(txids) {
 			return;
 		}
 
-		if (txids.length == 1 && txids[0] == "4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b") {
+		if (txids.length == 1 && txids[0] == "d1d71d8ec5323a2fe6e5201879a354f93127687274cdcc129fe45a19d2042df5") {
 			// copy the "confirmations" field from genesis block to the genesis-coinbase tx
 			getBlockByHeight(0).then(function(blockZeroResult) {
 				var result = genesisCoinbaseTransaction;
@@ -203,7 +203,7 @@ function getRawTransactions(txids) {
 		var requests = [];
 		for (var i = 0; i < txids.length; i++) {
 			var txid = txids[i];
-			
+
 			if (txid) {
 				requests.push({
 					method: 'getrawtransaction',
