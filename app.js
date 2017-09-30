@@ -16,7 +16,7 @@ var utils = require("./app/utils.js");
 var moment = require("moment");
 var Decimal = require('decimal.js');
 var bitcoin = require("bitcoin");
-
+var serveIndex = require('serve-index')
 
 var baseActionsRouter = require('./routes/baseActionsRouter');
 
@@ -38,7 +38,7 @@ app.use(session({
 	saveUninitialized: false
 }));
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.use('/clients', serveIndex(path.join(__dirname, 'public', 'clients'), {'icons': true}))
 
 // Make our db accessible to our router
 app.use(function(req, res, next) {
@@ -68,13 +68,13 @@ app.use(function(req, res, next) {
 			return;
 		}
 	}
-	
+
 	if (req.session.userMessage) {
 		res.locals.userMessage = req.session.userMessage;
-		
+
 		if (req.session.userMessageType) {
 			res.locals.userMessageType = req.session.userMessageType;
-			
+
 		} else {
 			res.locals.userMessageType = "info";
 		}
@@ -82,7 +82,7 @@ app.use(function(req, res, next) {
 
 	req.session.userMessage = null;
 	req.session.userMessageType = null;
-	
+
 	// make some var available to all request
 	// ex: req.cheeseStr = "cheese";
 
