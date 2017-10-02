@@ -42,6 +42,15 @@ html
 			if (userMessage)
 				div(class="alert", class=(userMessageType ? ("alert-"  + userMessageType) : "alert-info"), role="alert")
 					span !{userMessage}
+			ul(class="list-group")
+				li(class="list-group-item")
+					strong Difficulty: #{difficulty}
+				li(class="list-group-item")
+					strong Current Supply: #{supply} SQ
+				li(class="list-group-item")
+					strong Max Supply: 21,000,000 SQ
+			br
+			br
 
 			block content
 

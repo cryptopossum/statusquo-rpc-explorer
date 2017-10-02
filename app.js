@@ -60,6 +60,18 @@ app.use(function(req, res, next) {
 		});
 	}
 
+	global.client.cmd('getinfo', function(err, result, resHeaders) {
+		if (err) {
+			return console.log("Error 3207fh0f: " + err);
+		}
+
+		res.locals.difficulty = result.difficulty;
+		// add premine value
+		res.locals.supply = ((result.blocks-2000)*50+2000*1000)+"";
+		// pretty output
+		res.locals.supply = res.locals.supply.split("").reverse().join("").match(/.{1,3}/g).join(",").split("").reverse().join("");
+	});
+
 	res.locals.host = req.session.host;
 	res.locals.port = req.session.port;
 
